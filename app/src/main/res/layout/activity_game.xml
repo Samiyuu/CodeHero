@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root" android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:orientation="vertical" android:padding="14dp">
+
+        <!-- ================= INTRO (mission briefing) ================= -->
+        <LinearLayout android:id="@+id/introGroup"
+            android:layout_width="match_parent" android:layout_height="0dp"
+            android:layout_weight="1" android:gravity="center_horizontal" android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/introInfoBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+
+                <com.ccat.coderhero.BevelTextView
+                    android:id="@+id/introInfo"
+                    style="@style/Panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="18dp"
+                    android:textSize="14sp" />
+
+                <com.ccat.coderhero.IconView
+                    android:layout_width="44dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="top|end"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="20dp"
+                    app:iconType="pulse" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/introAlertBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp">
+
+                <com.ccat.coderhero.BevelTextView
+                    android:id="@+id/introAlert"
+                    style="@style/Panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="18dp"
+                    android:paddingBottom="24dp"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:bvFill="#A8003A"
+                    app:bvLine="#E56A8E"
+                    app:bvOuter="#4A0018"
+                    app:bvStripes="true" />
+
+                <com.ccat.coderhero.IconView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="14dp"
+                    app:iconType="warning" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/introSystemBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp">
+
+                <com.ccat.coderhero.BevelTextView
+                    android:id="@+id/introSystem"
+                    style="@style/Panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:paddingTop="26dp"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center_horizontal"
+                    android:background="@drawable/chip_label"
+                    android:paddingStart="16dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="5dp"
+                    android:text="System Message:"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <com.ccat.coderhero.HeroView android:id="@+id/heroIntro"
+                android:layout_width="170dp" android:layout_height="0dp" android:layout_weight="1"
+                android:layout_marginTop="8dp" />
+
+            <com.ccat.coderhero.BevelTextView
+                android:id="@+id/btnIntroStart"
+                style="@style/PixelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:text=">> START >>"
+                android:textColor="#1A1205"
+                android:textSize="20sp"
+                app:bvCut="12dp"
+                app:bvFill="#FDB515"
+                app:bvLine="#FFE27A"
+                app:bvOuter="#2A1A08" />
+        </LinearLayout>
+
+        <!-- ================= PLAYING ================= -->
+        <LinearLayout android:id="@+id/playGroup"
+            android:layout_width="match_parent" android:layout_height="0dp"
+            android:layout_weight="1" android:orientation="vertical" android:visibility="gone">
+
+            <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+                <com.ccat.coderhero.BevelTextView android:id="@+id/header" style="@style/Panel"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:paddingStart="68dp" android:paddingEnd="16dp"
+                    android:paddingTop="14dp" android:paddingBottom="14dp" android:textSize="15sp" />
+                <com.ccat.coderhero.IconView android:layout_width="36dp" android:layout_height="36dp"
+                    android:layout_gravity="center_vertical|start" android:layout_marginStart="20dp"
+                    app:iconType="cross" />
+            </FrameLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" android:gravity="center_vertical" android:orientation="horizontal">
+
+                <com.ccat.coderhero.IconView
+                    android:id="@+id/heartIcon"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_weight="0"
+                    android:paddingEnd="50dp"
+                    app:iconType="heart" />
+
+                <ProgressBar
+                    android:id="@+id/timerBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_weight="1"
+                    android:max="1000"
+                    android:progress="1000"
+                    android:progressDrawable="@drawable/bar_hp" />
+                <TextView android:id="@+id/timerText"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp" android:background="@drawable/chip_dark"
+                    android:fontFamily="@font/orbitron_font" android:minWidth="58dp" android:gravity="center"
+                    android:paddingStart="10dp" android:paddingEnd="10dp" android:paddingTop="6dp" android:paddingBottom="6dp"
+                    android:text="60s" android:textColor="@color/white" android:textSize="16sp" android:textStyle="bold" />
+                <com.ccat.coderhero.IconView android:id="@+id/btnPause" android:layout_width="44dp" android:layout_height="44dp"
+                    android:layout_marginStart="8dp" android:clickable="true" android:focusable="true"
+                    app:iconType="pause" />
+            </LinearLayout>
+
+
+            <!-- Boss health bar (only shown on the boss level) -->
+            <LinearLayout android:id="@+id/bossGroup"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" android:gravity="center_vertical"
+                android:orientation="horizontal" android:visibility="gone">
+                <TextView android:id="@+id/bossLabel"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:background="@drawable/chip_dark" android:fontFamily="@font/orbitron_font"
+                    android:paddingStart="10dp" android:paddingEnd="10dp" android:paddingTop="4dp" android:paddingBottom="4dp"
+                    android:text="@string/boss_name" android:textColor="@color/boss_purple"
+                    android:textSize="12sp" android:textStyle="bold" />
+                <ProgressBar android:id="@+id/bossBar" style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="0dp" android:layout_height="16dp" android:layout_weight="1"
+                    android:layout_marginStart="8dp" android:max="1000" android:progress="1000"
+                    android:progressDrawable="@drawable/boss_bar" />
+            </LinearLayout>
+
+            <ScrollView android:layout_width="match_parent" android:layout_height="0dp"
+                android:layout_weight="1" android:layout_marginTop="10dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <com.ccat.coderhero.BevelTextView android:id="@+id/codeText"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:fontFamily="@font/orbitron_font" android:padding="18dp"
+                        android:textColor="@color/code_default" android:textSize="@dimen/code_text_size" android:visibility="gone"
+                        app:bvFill="#0E1433" app:bvOuter="#4FC3F7" app:bvLine="#2D6FB0" />
+                    <com.ccat.coderhero.BevelTextView android:id="@+id/promptText" style="@style/Panel"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp" android:padding="18dp" android:textStyle="bold" />
+                    <com.ccat.coderhero.BevelTextView android:id="@+id/feedback" style="@style/Panel"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp" android:padding="16dp"
+                        android:textColor="@color/crimson" android:textSize="14sp" android:visibility="gone"
+                        app:bvFill="#FFF0F3" app:bvOuter="#5A0020" app:bvLine="#E56A8E" />
+                </LinearLayout>
+            </ScrollView>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" android:gravity="bottom" android:orientation="horizontal">
+
+                <LinearLayout android:layout_width="@dimen/game_hero_width" android:layout_height="wrap_content"
+                    android:gravity="center_horizontal" android:orientation="vertical">
+                    <TextView android:id="@+id/btnHint"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:background="@drawable/btn_yellow" android:clickable="true" android:focusable="true"
+                        android:fontFamily="@font/orbitron_font" android:gravity="center"
+                        android:paddingStart="4dp" android:paddingEnd="8dp" android:paddingTop="6dp" android:paddingBottom="9dp"
+                        android:text="50/50 x1" android:textColor="#1A1205" android:textSize="12sp" android:textStyle="bold" />
+                    <com.ccat.coderhero.HeroView android:id="@+id/heroPlay"
+                        android:layout_width="match_parent" android:layout_height="@dimen/game_hero_height"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <FrameLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp" android:layout_weight="1">
+
+                    <LinearLayout android:id="@+id/optionsGroup"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <com.ccat.coderhero.BevelTextView android:id="@+id/opt0" style="@style/Option"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:layout_marginBottom="6dp"
+                            android:background="@null"
+                            android:paddingStart="14dp" android:paddingEnd="12dp"
+                            android:paddingTop="12dp" android:paddingBottom="12dp"
+                            app:bvCut="8dp" />
+                        <com.ccat.coderhero.BevelTextView android:id="@+id/opt1" style="@style/Option"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:layout_marginBottom="6dp"
+                            android:background="@null"
+                            android:paddingStart="14dp" android:paddingEnd="12dp"
+                            android:paddingTop="12dp" android:paddingBottom="12dp"
+                            app:bvCut="8dp" />
+                        <com.ccat.coderhero.BevelTextView android:id="@+id/opt2" style="@style/Option"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:layout_marginBottom="6dp"
+                            android:background="@null"
+                            android:paddingStart="14dp" android:paddingEnd="12dp"
+                            android:paddingTop="12dp" android:paddingBottom="12dp"
+                            app:bvCut="8dp" />
+                        <com.ccat.coderhero.BevelTextView android:id="@+id/opt3" style="@style/Option"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:layout_marginBottom="6dp"
+                            android:background="@null"
+                            android:paddingStart="14dp" android:paddingEnd="12dp"
+                            android:paddingTop="12dp" android:paddingBottom="12dp"
+                            app:bvCut="8dp" />
+                    </LinearLayout>
+
+                    <!-- Fill-in typing questions -->
+                    <LinearLayout android:id="@+id/typeGroup"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical" android:visibility="gone">
+                        <EditText android:id="@+id/typeInput"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:background="@drawable/opt_default" android:fontFamily="@font/orbitron_font"
+                            android:hint="@string/type_hint" android:imeOptions="actionDone"
+                            android:inputType="textNoSuggestions|textVisiblePassword"
+                            android:maxLines="1" android:padding="14dp"
+                            android:textColor="@color/black" android:textColorHint="#8A90AA"
+                            android:textSize="@dimen/option_text_size" android:textStyle="bold" />
+                        <TextView android:id="@+id/btnSubmit" style="@style/PixelButton"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp" android:layout_marginBottom="6dp"
+                            android:background="@drawable/btn_blue" android:minWidth="0dp"
+                            android:text="@string/submit" android:textSize="18sp" />
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ================= RESULT ================= -->
+        <LinearLayout android:id="@+id/resultGroup"
+            android:layout_width="match_parent" android:layout_height="0dp"
+            android:layout_weight="1" android:gravity="center_horizontal"
+            android:orientation="vertical" android:visibility="gone">
+            <ScrollView android:layout_width="match_parent" android:layout_height="0dp"
+                android:layout_weight="2" android:layout_marginTop="8dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView android:id="@+id/resultText" style="@style/Panel"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp" android:background="@drawable/panel_green"
+                        android:fontFamily="@font/orbitron_font" android:textColor="@color/white"
+                        android:textSize="20sp" android:textStyle="bold" />
+                    <com.ccat.coderhero.BevelTextView android:id="@+id/explainText" style="@style/Panel"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp" android:padding="18dp" android:textSize="14sp" />
+                    <com.ccat.coderhero.BevelTextView android:id="@+id/badgeText" style="@style/Panel"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp" android:padding="14dp" android:textSize="14sp"
+                        android:visibility="gone"
+                        app:bvFill="#FFF6D6" app:bvOuter="#6B4A00" app:bvLine="#FDB515" />
+                </LinearLayout>
+            </ScrollView>
+            <com.ccat.coderhero.HeroView android:id="@+id/heroResult"
+                android:layout_width="160dp" android:layout_height="0dp" android:layout_weight="1"
+                android:layout_marginTop="8dp" />
+            <TextView android:id="@+id/btnPrimary" style="@style/PixelButton"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:background="@drawable/btn_yellow" android:text="CONTINUE" />
+            <TextView android:id="@+id/btnReview" style="@style/PixelButton"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="12dp" android:background="@drawable/btn_blue"
+                android:textSize="16sp" android:visibility="gone" />
+            <TextView android:id="@+id/btnSecondary" style="@style/PixelButton"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="12dp" android:layout_marginBottom="8dp"
+                android:background="@drawable/btn_brown" android:text="QUIT" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

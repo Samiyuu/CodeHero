@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generic scrolling list screen used by Practice, Learn, Stats and Review. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/bg_main_coderhero">
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:orientation="vertical" android:gravity="center_horizontal" android:padding="20dp">
+
+        <TextView android:id="@+id/listTitle" style="@style/PixelButton"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" android:background="@drawable/panel_green"
+            android:minWidth="0dp" android:paddingBottom="12dp" />
+
+        <ScrollView android:layout_width="match_parent" android:layout_height="0dp"
+            android:layout_weight="1" android:layout_marginTop="14dp" android:fillViewport="true">
+            <LinearLayout android:id="@+id/listContent"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+
+        <TextView android:id="@+id/btnAction" style="@style/PixelButton"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" android:background="@drawable/btn_yellow"
+            android:textSize="18sp" android:visibility="gone" />
+        <TextView android:id="@+id/btnBack" style="@style/PixelButton"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" android:layout_marginBottom="8dp"
+            android:background="@drawable/btn_brown" android:text="@string/back" />
+    </LinearLayout>
+</FrameLayout>

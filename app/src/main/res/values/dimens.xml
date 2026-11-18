@@ -1,0 +1,7 @@
+<resources>
+    <!-- Hero next to the answers. Small phones get a smaller hero so 4 answers always fit. -->
+    <dimen name="game_hero_width">76dp</dimen>
+    <dimen name="game_hero_height">96dp</dimen>
+    <dimen name="code_text_size">15sp</dimen>
+    <dimen name="option_text_size">14sp</dimen>
+</resources>

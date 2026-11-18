@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BevelTextView">
+        <attr name="bvFill" format="color" />
+        <attr name="bvOuter" format="color" />
+        <attr name="bvLine" format="color" />
+        <attr name="bvCut" format="dimension" />
+        <attr name="bvStripes" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="IconView">
+        <attr name="iconType" format="enum">
+            <enum name="cross" value="0" />
+            <enum name="heart" value="1" />
+            <enum name="warning" value="2" />
+            <enum name="pulse" value="3" />
+            <enum name="pause" value="4" />
+        </attr>
+    </declare-styleable>
+</resources>

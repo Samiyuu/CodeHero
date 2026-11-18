@@ -1,0 +1,15 @@
+[
+ {"id":"first_win",   "title":"First Rescue",     "desc":"Clear your first story level.",              "type":"levels_cleared",  "param":1},
+ {"id":"halfway",     "title":"Halfway Hero",     "desc":"Clear 4 story levels.",                      "type":"levels_cleared",  "param":4},
+ {"id":"boss",        "title":"Corruptor Purged", "desc":"Defeat the Corruptor in the final level.",   "type":"boss",            "param":7},
+ {"id":"streak10",    "title":"On Fire",          "desc":"Answer 10 correct in a row.",                "type":"best_streak",     "param":10},
+ {"id":"streak20",    "title":"Unstoppable",      "desc":"Answer 20 correct in a row.",                "type":"best_streak",     "param":20},
+ {"id":"first_try_3", "title":"Clean Landing",    "desc":"Clear Level 3 on your first attempt.",       "type":"first_try",       "param":3},
+ {"id":"first_try_7", "title":"No Retries",       "desc":"Clear Level 7 on your first attempt.",       "type":"first_try",       "param":7},
+ {"id":"star_3",      "title":"Speed Coder",      "desc":"Earn 3 stars on any level.",                 "type":"stars_any_3",     "param":1},
+ {"id":"star_all",    "title":"Perfectionist",    "desc":"Earn 3 stars on every level.",               "type":"stars_any_3",     "param":7},
+ {"id":"endless_100", "title":"Survivor",         "desc":"Score 100 in Endless mode.",                 "type":"endless_score",   "param":100},
+ {"id":"daily_3",     "title":"Daily Habit",      "desc":"Finish the daily challenge 3 days in a row.","type":"daily_streak",    "param":3},
+ {"id":"typist",      "title":"Syntax Typist",    "desc":"Type 10 correct answers.",                   "type":"typing_correct",  "param":10},
+ {"id":"scholar",     "title":"Scholar",          "desc":"Answer 100 questions correctly.",            "type":"total_correct",   "param":100}
+]

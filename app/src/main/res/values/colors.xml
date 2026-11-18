@@ -1,0 +1,21 @@
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#111111</color>
+    <color name="crimson">#A8003A</color>
+    <color name="lab_dark">#131A5C</color>
+    <color name="wood_text">#3A1A10</color>
+
+    <!-- Code card colours -->
+    <color name="code_default">#7DE3FF</color>
+    <color name="code_keyword">#FF79C6</color>
+    <color name="code_string">#F1FA8C</color>
+    <color name="code_number">#BD93F9</color>
+    <color name="code_comment">#8A93B8</color>
+    <color name="code_blank">#FFFFFF</color>
+
+    <!-- Timer warning / HUD -->
+    <color name="warn_red">#FF5A5A</color>
+    <color name="star_gold">#E3A100</color>
+    <color name="star_empty">#9A8F7A</color>
+    <color name="boss_purple">#B14BFF</color>
+</resources>

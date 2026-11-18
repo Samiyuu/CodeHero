@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  GAME TUNING: change any number here, no Java edits needed.
+-->
+<resources>
+    <!-- Splash screen -->
+    <integer name="splash_ms">2000</integer>
+
+    <!-- Story mode: stars are decided by how much of the level timer is LEFT when you win -->
+    <integer name="star3_min_percent">50</integer>   <!-- 3 stars if at least 50% time left -->
+    <integer name="star2_min_percent">25</integer>   <!-- 2 stars if at least 25% time left, otherwise 1 -->
+
+    <!-- Timer warning: bar turns red + pulses when this many seconds remain
+         (never more than 1/3 of the total time, so short Endless clocks still make sense) -->
+    <integer name="warn_seconds">10</integer>
+
+    <!-- 50/50 hint: uses per run (a Story level, an Endless run, a Practice session, ...) -->
+    <integer name="hints_per_run">1</integer>
+
+    <!-- Endless mode -->
+    <integer name="endless_lives">5</integer>
+    <integer name="endless_start_seconds">15</integer>
+    <integer name="endless_min_seconds">8</integer>
+    <integer name="endless_correct_per_second_less">5</integer> <!-- clock loses 1s every N correct answers -->
+    <integer name="endless_correct_per_tier">5</integer>        <!-- difficulty goes up every N correct answers -->
+    <integer name="question_history_size">30</integer>          <!-- Endless avoids the last N questions (saved on device) -->
+
+    <!-- Practice / Daily / Review -->
+    <integer name="practice_question_count">10</integer>
+    <integer name="daily_question_count">5</integer>
+    <integer name="daily_seconds">90</integer>
+
+    <!-- Boss fight: which story level has the Corruptor health bar -->
+    <integer name="boss_level">7</integer>
+
+    <!-- Leaderboard -->
+    <integer name="leaderboard_size">5</integer>
+
+    <!-- Feedback -->
+    <integer name="vibrate_wrong_ms">140</integer>
+    <item name="large_text_scale" format="float" type="dimen">1.3</item>
+
+    <!-- Tablet: screens never get wider than this (extra space becomes margin) -->
+    <integer name="max_content_width_dp">560</integer>
+</resources>

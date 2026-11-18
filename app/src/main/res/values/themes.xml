@@ -1,0 +1,43 @@
+<resources>
+    <style name="Theme.CoderHero" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/lab_dark</item>
+    </style>
+
+    <!-- Pixel-style button (apply a btn_* drawable as background) -->
+    <style name="PixelButton">
+        <item name="android:minWidth">220dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">28dp</item>
+        <item name="android:paddingRight">32dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.12</item>
+        <item name="android:fontFamily">@font/press_start2p</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <!-- Rounded speech-bubble panel -->
+    <style name="Panel">
+        <item name="android:padding">16dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/orbitron_font</item>
+    </style>
+
+    <!-- Quiz answer option -->
+    <style name="Option">
+        <item name="android:padding">14dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/orbitron_font</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+</resources>

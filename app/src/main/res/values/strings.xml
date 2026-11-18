@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Coder Hero: Syntax Savior</string>
+
+    <!-- Main menu / modes -->
+    <string name="btn_stats">STATS</string>
+    <string name="mode_story">STORY MODE</string>
+    <string name="mode_endless">ENDLESS MODE</string>
+    <string name="mode_daily">DAILY CHALLENGE</string>
+    <string name="mode_practice">PRACTICE</string>
+    <string name="mode_learn">LEARN</string>
+    <string name="info_story">Saved: %1$d/%2$d Places Rescued  \u2605 %3$d/%4$d</string>
+    <string name="info_endless">Best Score: %1$d</string>
+    <string name="info_daily_todo">Today\'s 5 Questions \u00B7 Streak %1$d</string>
+    <string name="info_daily_done">Done Today \u2713 %1$d/%2$d \u00B7 Streak %3$d</string>
+    <string name="info_practice">No Timer. No Fail. Pick a Topic.</string>
+    <string name="info_learn">Short Java Cheat-Sheets</string>
+
+    <!-- Game -->
+    <string name="hint_btn">50/50 \u00D7%1$d</string>
+    <string name="hint_btn_empty">50/50 \u00D70</string>
+    <string name="type_hint">Type Your Answer</string>
+    <string name="submit">OK</string>
+    <string name="tap_continue">(Tap to Continue)</string>
+    <string name="correct_mark">\u2713 Correct!</string>
+    <string name="wrong_answer_is">Answer: %1$s</string>
+    <string name="boss_name">THE CORRUPTOR</string>
+    <string name="review_missed">REVIEW MISSED (%1$d)</string>
+    <string name="new_trophy">\uD83C\uDFC6 NEW TROPHY: %1$s</string>
+    <string name="practice_done">PRACTICE COMPLETE</string>
+    <string name="daily_done">DAILY COMPLETE</string>
+    <string name="daily_timeout">TIME\'S UP</string>
+    <string name="review_done">REVIEW COMPLETE</string>
+
+    <!-- Screens -->
+    <string name="title_practice">PRACTICE</string>
+    <string name="title_learn">LEARN</string>
+    <string name="title_stats">STATS</string>
+    <string name="title_review">REVIEW</string>
+    <string name="all_topics">ALL TOPICS</string>
+    <string name="retry_missed">RETRY MISSED</string>
+    <string name="back">BACK</string>
+
+    <!-- Settings -->
+    <string name="set_sound">SOUND FX</string>
+    <string name="set_vibration">VIBRATION</string>
+    <string name="set_large_text">LARGE TEXT</string>
+    <string name="set_colorblind">COLORBLIND MODE</string>
+    <string name="set_reset">RESET PROGRESS</string>
+    <string name="reset_title">Reset Progress?</string>
+    <string name="reset_message">Story Levels, Stars, Stats, Trophies, Daily Streak and the Leaderboard will be Cleared. Your Settings Stay.</string>
+    <string name="stars_total">TOTAL STARS \u2605 %1$d/%2$d</string>
+</resources>

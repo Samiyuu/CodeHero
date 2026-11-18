@@ -1,0 +1,6 @@
+<resources>
+    <dimen name="game_hero_width">96dp</dimen>
+    <dimen name="game_hero_height">130dp</dimen>
+    <dimen name="code_text_size">18sp</dimen>
+    <dimen name="option_text_size">15sp</dimen>
+</resources>

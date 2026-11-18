@@ -1,0 +1,676 @@
+[
+ {
+  "level": 1,
+  "sections": [
+   {
+    "heading": "Before you start: what is a program?",
+    "text": "A Java program is a list of instructions the computer follows <b>from top to bottom, one at a time</b>. Almost every instruction needs to remember something: a score, a name, a patient's heart rate. Remembering is the job of <b>variables</b>.<br><br>Every Java instruction is called a <b>statement</b>, and almost every statement ends with a semicolon <b>;</b>. Think of the semicolon as the full stop of a sentence. Forget it and the compiler (the program that checks your code) will refuse to run it."
+   },
+   {
+    "heading": "What is a variable?",
+    "text": "A variable is a <b>named box in the computer's memory</b>. The box has three properties:<br><b>1. A type</b>: what kind of thing it can hold (whole number, text, true/false).<br><b>2. A name</b>: how you refer to it later.<br><b>3. A value</b>: what is inside right now.<br><br>In Java the type is decided when you create the box and <b>can never change</b>. A box made for whole numbers will never hold text. This is called <i>static typing</i> and it is why Java catches many mistakes before your program even runs."
+   },
+   {
+    "heading": "Declaring a variable",
+    "text": "<b>Declaring</b> means creating the box. The pattern is:<br><b>type name = value;</b><br><br>Read it right to left: put the value into the box called name, and the box holds the given type. The single <b>=</b> here is the <b>assignment operator</b>. It does NOT mean \"equals\" like in maths. It means \"store the right side into the left side\".",
+    "code": "int heartRate = 72;\nString patientStatus = \"STABLE\";\nboolean isStable = true;\ndouble temperature = 36.8;\nchar bloodGroup = 'A';"
+   },
+   {
+    "heading": "Declare and assign separately",
+    "text": "You can create the box first and fill it later. Until it has a value, Java will not let you read it (the compiler says <i>variable might not have been initialized</i>).",
+    "code": "int score;          // box created, empty\nscore = 90;         // now it holds 90\n\nint level;\nSystem.out.println(level);  // ERROR: not initialized"
+   },
+   {
+    "heading": "Changing a value (reassignment)",
+    "text": "After the first assignment you may put a new value in the same box. You do NOT repeat the type, because the box already exists. Writing the type again would try to create a second box with the same name, which is an error.",
+    "code": "int lives = 3;\nlives = 2;          // OK: reassign\nlives = lives - 1;  // OK: uses old value (2), stores 1\nint lives = 5;      // ERROR: lives already declared"
+   },
+   {
+    "heading": "Reading a line of code slowly",
+    "text": "Take <b>int lives = lives - 1;</b> style lines in two steps: <br><b>Step 1:</b> Java works out the RIGHT side first (uses the current value).<br><b>Step 2:</b> it stores the result in the LEFT side.<br><br>So <b>lives = lives - 1;</b> when lives is 2 calculates 2 - 1 = 1, then stores 1. The old value is gone."
+   },
+   {
+    "heading": "The common types",
+    "text": "<b>int</b>: whole numbers like 7, -40, 0. Range is about -2.1 billion to +2.1 billion.<br><b>double</b>: numbers with decimals like 3.14 or -0.5.<br><b>boolean</b>: only <b>true</b> or <b>false</b> (lowercase).<br><b>char</b>: exactly one character in <b>single quotes</b>, like 'A' or '7'.<br><b>String</b>: text in <b>double quotes</b>, like \"Hello\". It starts with a capital S because it is a class, not a primitive type.<br><br>Level 2 covers these in depth. For now, match the value to the type."
+   },
+   {
+    "heading": "Quotes matter",
+    "text": "Single quotes are for exactly one character. Double quotes are for text of any length. Mixing them is a very common beginner error.",
+    "code": "char a = 'A';        // OK\nchar b = \"A\";        // ERROR: double quotes make a String\nString c = 'Hello';  // ERROR: single quotes are for one char\nString d = \"Hello\";  // OK"
+   },
+   {
+    "heading": "Naming rules (the compiler enforces these)",
+    "text": "<b>1.</b> Letters, digits, underscore _ and dollar $ only. No spaces, no hyphens.<br><b>2.</b> Cannot start with a digit.<br><b>3.</b> Cannot be a reserved keyword (class, int, if, for, return, true...).<br><b>4.</b> Case-sensitive: <b>score</b>, <b>Score</b> and <b>SCORE</b> are three different variables.",
+    "code": "int heart-rate = 70;   // ERROR: hyphen\nint 2fast = 1;         // ERROR: starts with digit\nint class = 3;         // ERROR: keyword\nint my score = 5;      // ERROR: space\nint heartRate = 70;    // OK"
+   },
+   {
+    "heading": "Naming conventions (good habits)",
+    "text": "These are not enforced, but every Java programmer follows them:<br><b>camelCase</b> for variables and methods: first word lowercase, each next word capitalized (patientStatus).<br><b>PascalCase</b> for classes: every word capitalized (CoderHero).<br><b>UPPER_SNAKE_CASE</b> for constants (MAX_LIVES).<br>Pick names that explain themselves: <b>heartRate</b> is far better than <b>x</b>."
+   },
+   {
+    "heading": "Constants with final",
+    "text": "Put <b>final</b> in front and the value is locked after the first assignment. Use it for values that should never change, like a maximum or a tax rate. Trying to change it is a compile error, which protects you from accidental bugs.",
+    "code": "final int MAX_LIVES = 3;\nMAX_LIVES = 5;   // ERROR: cannot assign a value to final variable"
+   },
+   {
+    "heading": "Declare several at once",
+    "text": "Variables of the same type can share one declaration, separated by commas. Each can have its own value or none.",
+    "code": "int a = 1, b = 2, c;\nc = a + b;   // 3"
+   },
+   {
+    "heading": "Showing a value on screen",
+    "text": "To see what a variable holds, print it. <b>System.out.println(...)</b> prints and moves to a new line. <b>System.out.print(...)</b> prints without a new line. Text goes in double quotes; a variable name is written without quotes.",
+    "code": "int age = 17;\nSystem.out.println(age);        // prints 17\nSystem.out.println(\"age\");      // prints the word age\nSystem.out.println(\"Age: \" + age);  // prints Age: 17"
+   },
+   {
+    "heading": "Worked example: trace the values",
+    "text": "Follow each line and track the boxes. This habit of <b>tracing</b> is the best way to understand code.",
+    "code": "int a = 5;        // a = 5\nint b = 10;       // a = 5,  b = 10\nint temp = a;     // a = 5,  b = 10, temp = 5\na = b;            // a = 10, b = 10, temp = 5\nb = temp;         // a = 10, b = 5,  temp = 5\n// a and b have been swapped!"
+   },
+   {
+    "heading": "Typical compiler errors and what they mean",
+    "text": "<b>';' expected</b>: you forgot a semicolon (look at the line above the one reported).<br><b>cannot find symbol</b>: you used a name that was never declared, or you misspelled it, or the capitalization differs.<br><b>incompatible types</b>: the value does not fit the type, like putting \"Hi\" into an int.<br><b>variable already defined</b>: you declared the same name twice.<br><b>might not have been initialized</b>: you read a variable that has no value yet."
+   },
+   {
+    "heading": "Practice: try to answer first",
+    "text": "<b>Q1.</b> Which line is wrong? (a) int x = 4; (b) String s = 'hi'; (c) double d = 2.5;<br><b>Q2.</b> After int n = 3; n = n + 4; what does n hold?<br><b>Q3.</b> Is Score the same variable as score?<br><br><b>Answers:</b> Q1: (b), single quotes are for one char, so use \"hi\". Q2: 7. Q3: No, Java is case-sensitive."
+   },
+   {
+    "heading": "Cheat sheet: Variables",
+    "text": "<b>Declare:</b> type name;<br><b>Assign:</b> name = value;<br><b>Both:</b> type name = value;<br><b>Constant:</b> final type NAME = value;<br><b>Statements end with ;</b><br><b>Strings:</b> \"double\" &nbsp; <b>chars:</b> 'single'<br><b>Names:</b> camelCase, no spaces, no leading digit, not a keyword, case-sensitive<br><b>Print:</b> System.out.println(x);<br><b>Top mistakes:</b> missing ;, wrong quotes, using a variable before declaring or assigning it, declaring the same name twice."
+   }
+  ]
+ },
+ {
+  "level": 2,
+  "sections": [
+   {
+    "heading": "Why types matter",
+    "text": "Computers store everything as bits, so Java needs to know how to interpret them. The type tells Java how much memory to use and which operations make sense. You can add two numbers, but multiplying two true/false values makes no sense, and Java will tell you so."
+   },
+   {
+    "heading": "The whole-number types",
+    "text": "<b>byte</b> (-128 to 127), <b>short</b> (about +/-32 thousand), <b>int</b> (about +/-2.1 billion), <b>long</b> (about +/-9 quintillion).<br>In practice use <b>int</b> by default and <b>long</b> when numbers get huge. A long literal needs an <b>L</b> at the end.",
+    "code": "int population = 2000000;\nlong worldPop = 8000000000L;   // needs L\nint tooBig = 3000000000;       // ERROR: over int limit"
+   },
+   {
+    "heading": "The decimal types",
+    "text": "<b>double</b> is the default for decimals (about 15 digits of precision). <b>float</b> is smaller and less precise; a float literal needs an <b>f</b>. Use double unless you have a reason not to.",
+    "code": "double pi = 3.14159;\nfloat ratio = 2.5f;      // needs f\nfloat bad = 2.5;         // ERROR: 2.5 is a double"
+   },
+   {
+    "heading": "Decimals are approximate",
+    "text": "Computers store decimals in binary, so some values cannot be stored exactly. Never compare doubles with == after calculating. Money is usually stored as whole cents in an int, or with the BigDecimal class.",
+    "code": "double x = 0.1 + 0.2;\nSystem.out.println(x);   // 0.30000000000000004\nSystem.out.println(x == 0.3);  // false"
+   },
+   {
+    "heading": "boolean and char",
+    "text": "<b>boolean</b> holds <b>true</b> or <b>false</b> and powers every decision in your program.<br><b>char</b> holds one character. Under the hood it is a number (its Unicode code), so 'A' is 65 and 'a' is 97. That is why you can do maths with chars.",
+    "code": "boolean online = true;\nchar letter = 'A';\nSystem.out.println(letter + 1);        // 66 (number!)\nSystem.out.println((char)(letter + 1)); // B"
+   },
+   {
+    "heading": "Arithmetic operators",
+    "text": "<b>+</b> add, <b>-</b> subtract, <b>*</b> multiply, <b>/</b> divide, <b>%</b> remainder (modulus). <b>%</b> gives what is left over after dividing, which is surprisingly useful.",
+    "code": "int a = 17 + 5;   // 22\nint b = 17 - 5;   // 12\nint c = 17 * 5;   // 85\nint d = 17 / 5;   // 3   (see integer division)\nint e = 17 % 5;   // 2   (17 = 3*5 + 2)"
+   },
+   {
+    "heading": "Uses of the % operator",
+    "text": "<b>Even or odd:</b> n % 2 == 0 means even.<br><b>Divisible by k:</b> n % k == 0.<br><b>Wrap around:</b> index % length keeps an index inside a range.<br><b>Last digit:</b> n % 10.<br><b>Clock maths:</b> (hour + 5) % 12.",
+    "code": "int n = 14;\nboolean even = (n % 2 == 0);    // true\nint lastDigit = 1234 % 10;       // 4"
+   },
+   {
+    "heading": "Integer division",
+    "text": "When <b>both</b> operands are ints, Java does whole-number division and <b>throws away the decimal part</b> (it truncates, it does not round). To get decimals, make at least one side a double <i>before</i> the division happens.",
+    "code": "int a = 7 / 2;           // 3\ndouble b = 7 / 2;        // 3.0  (int division happened first!)\ndouble c = 7 / 2.0;      // 3.5\ndouble d = (double) 7 / 2; // 3.5\nint e = -7 / 2;          // -3  (toward zero)"
+   },
+   {
+    "heading": "Order of operations",
+    "text": "Same as maths: <b>1.</b> parentheses, <b>2.</b> * / % (left to right), <b>3.</b> + - (left to right). When unsure, add parentheses; they cost nothing and make the code clearer.",
+    "code": "int a = 2 + 3 * 4;      // 14\nint b = (2 + 3) * 4;    // 20\nint c = 20 / 5 * 2;     // 8  (left to right)\nint d = 20 / (5 * 2);   // 2"
+   },
+   {
+    "heading": "Mixing types and casting",
+    "text": "<b>Widening</b> (small type into a bigger one, like int into double) is automatic and safe. <b>Narrowing</b> (big into small, like double into int) can lose data, so Java forces you to write a <b>cast</b> in parentheses. A cast to int cuts off the decimals; it does not round.",
+    "code": "double d = 5;            // OK: 5.0\nint i = 9.99;            // ERROR: possible lossy conversion\nint j = (int) 9.99;      // 9\nint k = (int) 9.99 + 1;  // 10  (cast applies to 9.99 only)\nlong big = 100;          // OK widening"
+   },
+   {
+    "heading": "Shortcut assignment operators",
+    "text": "These update a variable using its own value:<br><b>x += 5</b> means x = x + 5<br><b>x -= 5</b> means x = x - 5<br><b>x *= 2</b> means x = x * 2<br><b>x /= 2</b> and <b>x %= 3</b> work the same way.",
+    "code": "int score = 10;\nscore += 5;    // 15\nscore *= 2;    // 30\nscore -= 10;   // 20\nscore /= 4;    // 5"
+   },
+   {
+    "heading": "Increment and decrement",
+    "text": "<b>x++</b> adds 1, <b>x--</b> subtracts 1. There are two forms:<br><b>Post</b> (x++): use the current value, THEN change it.<br><b>Pre</b> (++x): change it FIRST, then use the new value.<br>Alone on a line they behave the same; the difference only shows inside bigger expressions.",
+    "code": "int a = 5;\nint b = a++;   // b = 5, a = 6\nint c = ++a;   // a = 7, c = 7\nint d = a--;   // d = 7, a = 6"
+   },
+   {
+    "heading": "Comparison operators",
+    "text": "Comparisons produce a <b>boolean</b>:<br><b>==</b> equal, <b>!=</b> not equal, <b>&lt;</b> less, <b>&gt;</b> greater, <b>&lt;=</b> less or equal, <b>&gt;=</b> greater or equal.<br><br>The classic bug: <b>=</b> assigns, <b>==</b> compares.",
+    "code": "int hp = 50;\nboolean low = hp < 20;      // false\nboolean full = hp == 100;   // false\nboolean alive = hp != 0;    // true"
+   },
+   {
+    "heading": "Logical operators",
+    "text": "<b>&amp;&amp;</b> (AND): true only if BOTH sides are true.<br><b>||</b> (OR): true if AT LEAST ONE side is true.<br><b>!</b> (NOT): flips true to false and back.<br><br><b>Truth table:</b><br>true &amp;&amp; true = true<br>true &amp;&amp; false = false<br>false || true = true<br>false || false = false<br>!true = false",
+    "code": "int volts = 220;\nboolean ok = (volts > 100) && (volts < 240);  // true\nboolean bad = !(volts > 100);                 // false"
+   },
+   {
+    "heading": "Short-circuit evaluation",
+    "text": "Java stops as soon as the answer is known. In <b>a &amp;&amp; b</b>, if a is false, b is never evaluated. In <b>a || b</b>, if a is true, b is skipped. This is used for safe checks.",
+    "code": "int x = 0;\nboolean safe = (x != 0) && (10 / x > 1);  // no crash: right side skipped"
+   },
+   {
+    "heading": "Joining text with +",
+    "text": "With Strings, <b>+</b> means <b>join</b> (concatenate). Evaluation goes left to right, so the order of numbers and strings changes the result.",
+    "code": "\"Level \" + 2       // \"Level 2\"\n1 + 2 + \"go\"       // \"3go\"   (1+2 first)\n\"go\" + 1 + 2       // \"go12\"  (join each)\n\"go\" + (1 + 2)     // \"go3\""
+   },
+   {
+    "heading": "The Math class",
+    "text": "Java ships a toolbox of math helpers. Call them with <b>Math.</b> in front.",
+    "code": "Math.max(3, 9);       // 9\nMath.min(3, 9);       // 3\nMath.abs(-7);         // 7\nMath.pow(2, 3);       // 8.0\nMath.sqrt(16);        // 4.0\nMath.round(2.6);      // 3\nMath.random();        // 0.0 up to (not including) 1.0"
+   },
+   {
+    "heading": "Worked example: trace it",
+    "text": "What does this print? Work through it before reading the answer.",
+    "code": "int a = 10;\nint b = 3;\nSystem.out.println(a / b);          // 3\nSystem.out.println(a % b);          // 1\nSystem.out.println(a / (double) b); // 3.3333333333333335\nSystem.out.println(a > b && b > 5); // false"
+   },
+   {
+    "heading": "Practice: try to answer first",
+    "text": "<b>Q1.</b> What is 9 / 2 in Java?<br><b>Q2.</b> What is 9 % 2?<br><b>Q3.</b> What is 1 + 2 + \"3\" + 4?<br><b>Q4.</b> What does int x = (int) 7.9; store?<br><b>Q5.</b> What is the result of true || false &amp;&amp; false?<br><br><b>Answers:</b> Q1: 4. Q2: 1. Q3: \"334\" (3 first, then joins). Q4: 7. Q5: true (&amp;&amp; is done before ||)."
+   },
+   {
+    "heading": "Cheat sheet: Types and operators",
+    "text": "<b>Whole:</b> byte, short, int, long(L) &nbsp; <b>Decimal:</b> double, float(f)<br><b>Other:</b> boolean, char, String<br><b>Arithmetic:</b> + - * / %<br><b>int / int</b> = int, decimals dropped<br><b>Cast:</b> (int) x cuts decimals, (double) x widens<br><b>Shortcuts:</b> += -= *= /= %= ++ --<br><b>Compare:</b> == != &lt; &gt; &lt;= &gt;=<br><b>Logic:</b> &amp;&amp; || !<br><b>Order:</b> () then * / % then + - then comparisons then &amp;&amp; then ||<br><b>Even test:</b> n % 2 == 0"
+   }
+  ]
+ },
+ {
+  "level": 3,
+  "sections": [
+   {
+    "heading": "Programs that decide",
+    "text": "So far your code ran every line in order. Real programs must <b>choose</b>: if the fuel is low, land; if the password is wrong, show an error. Choosing is done with <b>conditions</b>. A condition is any expression whose result is a <b>boolean</b> (true or false)."
+   },
+   {
+    "heading": "The if statement",
+    "text": "<b>if (condition) { code }</b><br>If the condition is true, the code inside the braces runs. If false, Java skips the whole block and continues after it. The condition MUST be in parentheses and MUST be a boolean.",
+    "code": "int fuel = 20;\nif (fuel < 30) {\n    System.out.println(\"Low fuel!\");\n}\nSystem.out.println(\"Done\");   // always runs"
+   },
+   {
+    "heading": "if / else",
+    "text": "Add <b>else</b> for the other case. Exactly one of the two blocks runs, never both, never neither.",
+    "code": "int age = 16;\nif (age >= 18) {\n    System.out.println(\"Adult\");\n} else {\n    System.out.println(\"Minor\");\n}"
+   },
+   {
+    "heading": "else if chains",
+    "text": "For more than two outcomes, chain tests. Java checks them <b>from the top down</b>, runs the <b>first</b> block whose condition is true, and skips everything after it. Order matters: put the strictest test first.",
+    "code": "int score = 85;\nif (score >= 90) {\n    System.out.println(\"A\");\n} else if (score >= 80) {\n    System.out.println(\"B\");   // this one runs\n} else if (score >= 70) {\n    System.out.println(\"C\");\n} else {\n    System.out.println(\"Below C\");\n}"
+   },
+   {
+    "heading": "Order mistake to avoid",
+    "text": "If you put the loosest test first, it swallows the others. Here every score above 70 prints C, even 99.",
+    "code": "if (score >= 70) {\n    System.out.println(\"C\");   // 99 lands here!\n} else if (score >= 90) {\n    System.out.println(\"A\");   // never reached\n}"
+   },
+   {
+    "heading": "Braces and indentation",
+    "text": "Braces <b>{ }</b> group the statements that belong to the if. Without braces, only the <b>next single statement</b> belongs to it, which causes sneaky bugs. Always use braces, and indent the inside so the structure is visible.",
+    "code": "if (hp <= 0)\n    System.out.println(\"Game over\");\n    System.out.println(\"Try again\");   // ALWAYS runs! not part of if"
+   },
+   {
+    "heading": "Mistake: = instead of ==",
+    "text": "<b>=</b> assigns, <b>==</b> compares. Inside an if, writing = with an int is a compile error because an assignment is not a boolean. (With a boolean variable it compiles but silently changes the value, which is even worse.)",
+    "code": "if (x = 5) { }          // ERROR: int cannot be converted to boolean\nif (x == 5) { }         // correct"
+   },
+   {
+    "heading": "Mistake: the stray semicolon",
+    "text": "A semicolon right after the condition ends the if with an empty body. The braces below then become an ordinary block that always runs.",
+    "code": "if (x > 100);          // empty if!\n{\n    System.out.println(\"Big\");  // runs no matter what\n}"
+   },
+   {
+    "heading": "Comparing Strings",
+    "text": "<b>==</b> on Strings checks whether two variables point at the same object, not whether the text matches. Always compare text with <b>.equals()</b>, or <b>.equalsIgnoreCase()</b> to ignore capitals.",
+    "code": "String name = \"Kai\";\nif (name.equals(\"Kai\")) { }          // correct\nif (name.equalsIgnoreCase(\"KAI\")) { }  // true\nif (name == \"Kai\") { }               // unreliable, avoid"
+   },
+   {
+    "heading": "Combining conditions",
+    "text": "Use <b>&amp;&amp;</b> (and), <b>||</b> (or), <b>!</b> (not) to build one condition from several. Never write a chained comparison like <b>0 &lt; x &lt; 10</b>; Java cannot do that. Write each test separately.",
+    "code": "if (age >= 13 && age <= 19) { }       // teenager\nif (day.equals(\"Sat\") || day.equals(\"Sun\")) { }\nif (!(score < 50)) { }                // same as score >= 50\nif (0 < x < 10) { }                   // ERROR"
+   },
+   {
+    "heading": "Nested if",
+    "text": "An if can sit inside another if. The inner test is only reached when the outer one is true. Use it when a second decision depends on the first, but do not nest too deeply; combine with &amp;&amp; when you can.",
+    "code": "if (hasTicket) {\n    if (age >= 18) {\n        System.out.println(\"Enter\");\n    } else {\n        System.out.println(\"Adults only\");\n    }\n} else {\n    System.out.println(\"Buy a ticket\");\n}"
+   },
+   {
+    "heading": "The dangling else",
+    "text": "An else always belongs to the <b>nearest</b> unmatched if above it, regardless of how you indent. Braces remove all doubt."
+   },
+   {
+    "heading": "The ternary operator",
+    "text": "A compact if/else that produces a value:<br><b>condition ? valueIfTrue : valueIfFalse</b><br>Good for simple choices. For anything longer, use a normal if.",
+    "code": "String result = (score >= 75) ? \"Pass\" : \"Fail\";\nint bigger = (a > b) ? a : b;"
+   },
+   {
+    "heading": "The switch statement",
+    "text": "Use <b>switch</b> when one variable is compared against several fixed values. It works with int, char, String and enums. Each <b>case</b> ends with <b>break</b>; <b>default</b> runs if nothing matches.",
+    "code": "int day = 3;\nswitch (day) {\n    case 1:\n        System.out.println(\"Mon\");\n        break;\n    case 2:\n        System.out.println(\"Tue\");\n        break;\n    case 3:\n        System.out.println(\"Wed\");   // runs\n        break;\n    default:\n        System.out.println(\"Other\");\n}"
+   },
+   {
+    "heading": "Fall-through",
+    "text": "If you forget <b>break</b>, Java keeps running into the next case, even if it does not match. This is called fall-through. It is usually a bug, but you can use it on purpose to share one result between several cases.",
+    "code": "switch (2) {\n    case 1: System.out.println(\"One\");\n    case 2: System.out.println(\"Two\");    // prints\n    case 3: System.out.println(\"Three\");  // also prints (no break)\n}\n\nswitch (month) {\n    case 12: case 1: case 2:\n        System.out.println(\"Cold\");   // three cases share this\n        break;\n}"
+   },
+   {
+    "heading": "switch with Strings",
+    "text": "switch can compare Strings (it uses equals internally). The text must match exactly, including capitals.",
+    "code": "switch (command) {\n    case \"start\":  begin();  break;\n    case \"stop\":   halt();   break;\n    default:       help();\n}"
+   },
+   {
+    "heading": "if or switch?",
+    "text": "<b>switch</b>: one value, many exact matches (menus, days, commands).<br><b>if / else if</b>: ranges (score &gt;= 90), or tests combining several variables."
+   },
+   {
+    "heading": "Worked example: trace it",
+    "text": "What prints when x = 15?",
+    "code": "int x = 15;\nif (x > 20) {\n    System.out.println(\"A\");\n} else if (x > 10 && x % 5 == 0) {\n    System.out.println(\"B\");   // x > 10 true, 15 % 5 == 0 true\n} else {\n    System.out.println(\"C\");\n}\n// prints B"
+   },
+   {
+    "heading": "Practice: try to answer first",
+    "text": "<b>Q1.</b> What is wrong: if (score = 100) ?<br><b>Q2.</b> What does a switch do when a case has no break?<br><b>Q3.</b> How do you check that String s equals \"go\"?<br><b>Q4.</b> What prints: int n = 8; if (n % 2 == 0) print(\"even\"); else print(\"odd\");<br><br><b>Answers:</b> Q1: it assigns instead of comparing; use ==. Q2: it falls through into the next case. Q3: s.equals(\"go\"). Q4: even."
+   },
+   {
+    "heading": "Cheat sheet: Conditions",
+    "text": "<b>if (cond) { }</b> cond must be boolean, in ( )<br><b>else if</b> top-down, first true wins<br><b>else</b> the leftover case<br><b>Always use braces</b><br><b>==</b> for numbers/chars, <b>.equals()</b> for Strings<br><b>&amp;&amp; || !</b> combine; no 0 &lt; x &lt; 10 chains<br><b>?:</b> condition ? a : b<br><b>switch</b> (value) { case X: ... break; default: ... }<br><b>Bugs:</b> = vs ==, ; after if(...), missing break, wrong test order"
+   }
+  ]
+ },
+ {
+  "level": 4,
+  "sections": [
+   {
+    "heading": "Why loops exist",
+    "text": "Imagine printing the numbers 1 to 1000. You do not want to write 1000 lines. A <b>loop</b> repeats a block of code as many times as needed. Java has three loops: <b>for</b>, <b>while</b> and <b>do-while</b>. All three can do the same job; they differ in how they are written and when they check."
+   },
+   {
+    "heading": "The for loop",
+    "text": "<b>for (start; test; update) { body }</b><br><b>1. start</b> runs once, at the beginning.<br><b>2. test</b> is checked before every round. If true, the body runs. If false, the loop ends.<br><b>3. update</b> runs after each round.<br>Then it goes back to step 2.",
+    "code": "for (int i = 0; i < 5; i++) {\n    System.out.println(i);\n}\n// prints 0 1 2 3 4"
+   },
+   {
+    "heading": "Tracing a for loop",
+    "text": "Make a table of what happens each round for <b>for (int i = 0; i &lt; 3; i++)</b>:<br><b>Start:</b> i = 0<br><b>Test 0 &lt; 3:</b> true, run body, i becomes 1<br><b>Test 1 &lt; 3:</b> true, run body, i becomes 2<br><b>Test 2 &lt; 3:</b> true, run body, i becomes 3<br><b>Test 3 &lt; 3:</b> false, loop ends.<br>The body ran 3 times with i = 0, 1, 2. The variable i is only visible inside the loop."
+   },
+   {
+    "heading": "Counting patterns",
+    "text": "Changing the start, test and update gives every pattern. Watch the boundary: <b>&lt;</b> versus <b>&lt;=</b> changes how many rounds you get.",
+    "code": "for (int i = 1; i <= 3; i++) { }     // 1 2 3\nfor (int i = 0; i < 3; i++) { }      // 0 1 2\nfor (int i = 10; i > 0; i--) { }     // 10 9 ... 1\nfor (int i = 0; i < 10; i += 2) { }  // 0 2 4 6 8\nfor (int i = 1; i <= 100; i *= 2) { } // 1 2 4 8 16 32 64"
+   },
+   {
+    "heading": "Off-by-one errors",
+    "text": "The most common loop bug is running one time too many or too few. Rule: starting at 0 with <b>&lt; n</b> runs exactly n times. Starting at 1 with <b>&lt;= n</b> also runs exactly n times. Mixing start 0 with <b>&lt;= n</b> runs n + 1 times."
+   },
+   {
+    "heading": "The while loop",
+    "text": "<b>while (condition) { body }</b><br>Checks the condition <b>before</b> every round. If it is false at the very start, the body never runs. Use it when you do not know in advance how many rounds you need. Something inside must eventually make the condition false.",
+    "code": "int n = 3;\nwhile (n > 0) {\n    System.out.println(n);\n    n--;            // without this, infinite loop\n}\n// prints 3 2 1"
+   },
+   {
+    "heading": "The do-while loop",
+    "text": "<b>do { body } while (condition);</b><br>Runs the body first, then checks. So it <b>always runs at least once</b>. Perfect for menus and input checks (\"ask, then check if the answer was valid\"). Note the semicolon after the condition.",
+    "code": "int x = 10;\ndo {\n    System.out.println(x);   // prints 10 once\n    x++;\n} while (x < 5);          // false, so it stops"
+   },
+   {
+    "heading": "Which loop should I use?",
+    "text": "<b>for</b>: you know the number of rounds (count from a to b).<br><b>while</b>: repeat until something happens; may run zero times.<br><b>do-while</b>: must run at least once."
+   },
+   {
+    "heading": "Infinite loops",
+    "text": "A loop whose test never becomes false runs forever and freezes your program. Common causes: forgetting to update the variable, updating in the wrong direction, or a test that is always true.",
+    "code": "int i = 0;\nwhile (i < 5) {\n    System.out.println(i);\n    // forgot i++  -> infinite\n}\n\nfor (int k = 10; k > 0; k++) { }   // goes the wrong way\nwhile (true) { }                  // infinite by design, needs break"
+   },
+   {
+    "heading": "break and continue",
+    "text": "<b>break</b> leaves the loop immediately. <b>continue</b> skips the rest of the current round and jumps to the next one (in a for loop, the update still runs).",
+    "code": "for (int i = 1; i <= 5; i++) {\n    if (i == 2) continue;   // skip 2\n    if (i == 5) break;      // stop before 5\n    System.out.println(i);\n}\n// prints 1 3 4"
+   },
+   {
+    "heading": "The accumulator pattern",
+    "text": "Make a variable before the loop and update it each round. This is the foundation of totals, counts, maximums and averages.",
+    "code": "int sum = 0;\nfor (int i = 1; i <= 5; i++) {\n    sum += i;        // 1, 3, 6, 10, 15\n}\nSystem.out.println(sum);  // 15\n\nint evens = 0;\nfor (int i = 1; i <= 10; i++) {\n    if (i % 2 == 0) evens++;\n}\n// evens = 5"
+   },
+   {
+    "heading": "Nested loops",
+    "text": "A loop inside a loop. For every single round of the outer loop, the inner loop runs <b>completely</b>. Outer 3 rounds x inner 2 rounds = 6 total runs of the inner body.",
+    "code": "for (int row = 1; row <= 3; row++) {\n    for (int col = 1; col <= 2; col++) {\n        System.out.println(row + \",\" + col);\n    }\n}\n// 1,1  1,2  2,1  2,2  3,1  3,2"
+   },
+   {
+    "heading": "Drawing a triangle",
+    "text": "Nested loops are great for patterns. Here the inner loop prints as many stars as the current row number, then println moves to the next line.",
+    "code": "for (int row = 1; row <= 4; row++) {\n    for (int s = 1; s <= row; s++) {\n        System.out.print(\"*\");\n    }\n    System.out.println();\n}\n// *\n// **\n// ***\n// ****"
+   },
+   {
+    "heading": "Mistake: semicolon after the loop header",
+    "text": "<b>for (...);</b> or <b>while (...);</b> creates an empty loop. The loop spins doing nothing, then the block below runs once.",
+    "code": "for (int i = 0; i < 5; i++);\n{\n    System.out.println(\"Hi\");   // runs once, not five times\n}"
+   },
+   {
+    "heading": "Worked example: trace it",
+    "text": "What does this print?",
+    "code": "int total = 0;\nfor (int i = 1; i <= 4; i++) {\n    if (i % 2 == 1) continue;\n    total += i;\n}\nSystem.out.println(total);\n// i=1 skipped, i=2 adds 2, i=3 skipped, i=4 adds 4  ->  6"
+   },
+   {
+    "heading": "Practice: try to answer first",
+    "text": "<b>Q1.</b> How many times does for (int i = 0; i &lt; 7; i++) run?<br><b>Q2.</b> How many times does do { } while (false); run?<br><b>Q3.</b> What does continue do?<br><b>Q4.</b> What is wrong with while (n &gt; 0) { print(n); }  if n starts at 5?<br><br><b>Answers:</b> Q1: 7. Q2: once. Q3: skips to the next round. Q4: n never changes, so it loops forever."
+   },
+   {
+    "heading": "Cheat sheet: Loops",
+    "text": "<b>for</b> (start; test; update) { } &nbsp; known count<br><b>while</b> (test) { } &nbsp; test first, may run 0 times<br><b>do { } while (test);</b> &nbsp; runs at least once<br><b>break</b> leave the loop, <b>continue</b> skip this round<br><b>i &lt; n</b> from 0 = n rounds<br><b>Accumulator:</b> total = 0; then total += value;<br><b>Nested:</b> inner runs fully per outer round<br><b>Bugs:</b> infinite loop, off-by-one, ; after the header"
+   }
+  ]
+ },
+ {
+  "level": 5,
+  "sections": [
+   {
+    "heading": "Why arrays?",
+    "text": "Suppose you store 30 student marks. Making 30 separate variables is painful. An <b>array</b> is <b>one variable that holds many values of the same type</b>, side by side in memory. You reach each value by its position number, called the <b>index</b>."
+   },
+   {
+    "heading": "Creating arrays",
+    "text": "Two ways. <b>1.</b> List the values directly. <b>2.</b> Create an empty array of a given size with <b>new</b>; the slots get default values (0 for numbers, false for boolean, null for objects).<br><br>The square brackets go after the type: <b>int[]</b> means \"array of int\".",
+    "code": "int[] ids = {101, 102, 103};          // direct values\nString[] names = {\"Ana\", \"Ben\", \"Cy\"};\nint[] marks = new int[5];             // 0 0 0 0 0\nboolean[] flags = new boolean[3];     // false false false"
+   },
+   {
+    "heading": "Indexes start at 0",
+    "text": "The first item is index <b>0</b>, not 1. For an array of length 5, the valid indexes are 0, 1, 2, 3, 4. The last index is always <b>length - 1</b>.<br><br>Picture it: ids = {101, 102, 103}<br>index 0 holds 101<br>index 1 holds 102<br>index 2 holds 103",
+    "code": "int[] a = {10, 20, 30};\nSystem.out.println(a[0]);   // 10\nSystem.out.println(a[2]);   // 30\na[1] = 99;                  // now {10, 99, 30}"
+   },
+   {
+    "heading": "Array length",
+    "text": "<b>arr.length</b> gives how many items the array holds. For arrays there are <b>no parentheses</b> (it is a field). The size is fixed forever once created.",
+    "code": "int[] a = {10, 20, 30};\nSystem.out.println(a.length);        // 3\nSystem.out.println(a[a.length - 1]); // 30 (last item)"
+   },
+   {
+    "heading": "ArrayIndexOutOfBoundsException",
+    "text": "If you use an index that does not exist (negative, or length or more), the program crashes at runtime with this exception. It is the classic off-by-one bug.",
+    "code": "int[] a = {1, 2, 3};\nSystem.out.println(a[3]);    // CRASH: valid indexes are 0, 1, 2\nSystem.out.println(a[-1]);   // CRASH"
+   },
+   {
+    "heading": "Looping over an array",
+    "text": "Arrays and for loops go together. Use <b>i &lt; arr.length</b> as the test. A for-each loop reads each value without an index, but cannot tell you the position.",
+    "code": "int[] a = {10, 20, 30};\nfor (int i = 0; i < a.length; i++) {\n    System.out.println(i + \": \" + a[i]);\n}\n\nfor (int value : a) {         // for-each\n    System.out.println(value);\n}"
+   },
+   {
+    "heading": "Common algorithm: total and average",
+    "text": "Add every element with an accumulator, then divide. Cast to double so the average keeps its decimals.",
+    "code": "int[] marks = {80, 90, 70};\nint sum = 0;\nfor (int m : marks) sum += m;\ndouble avg = (double) sum / marks.length;   // 80.0"
+   },
+   {
+    "heading": "Common algorithm: find the largest",
+    "text": "Assume the first item is the largest, then compare each other item and replace when you find a bigger one.",
+    "code": "int[] a = {4, 9, 2, 7};\nint max = a[0];\nfor (int i = 1; i < a.length; i++) {\n    if (a[i] > max) max = a[i];\n}\n// max = 9"
+   },
+   {
+    "heading": "Common algorithm: search",
+    "text": "Linear search: check each item until you find the target.",
+    "code": "int target = 7;\nint foundAt = -1;           // -1 means not found\nfor (int i = 0; i < a.length; i++) {\n    if (a[i] == target) {\n        foundAt = i;\n        break;\n    }\n}"
+   },
+   {
+    "heading": "Common algorithm: reverse in place",
+    "text": "Swap the first with the last, the second with the second-last, and so on, stopping at the middle.",
+    "code": "for (int i = 0; i < a.length / 2; i++) {\n    int temp = a[i];\n    a[i] = a[a.length - 1 - i];\n    a[a.length - 1 - i] = temp;\n}"
+   },
+   {
+    "heading": "Arrays are references",
+    "text": "An array variable holds a <b>reference</b> (an address), not the data itself. Assigning one array variable to another makes both point at the <b>same</b> array. Changing one changes the other. To make a real copy, use Arrays.copyOf.",
+    "code": "int[] a = {1, 2, 3};\nint[] b = a;          // same array!\nb[0] = 99;\nSystem.out.println(a[0]);   // 99\n\nint[] c = java.util.Arrays.copyOf(a, a.length);  // true copy"
+   },
+   {
+    "heading": "Printing and sorting",
+    "text": "Printing an array directly shows a useless address like [I@1b6d3586. Use the Arrays helper class (import java.util.Arrays).",
+    "code": "import java.util.Arrays;\n\nint[] a = {5, 2, 9};\nSystem.out.println(Arrays.toString(a));  // [5, 2, 9]\nArrays.sort(a);\nSystem.out.println(Arrays.toString(a));  // [2, 5, 9]"
+   },
+   {
+    "heading": "Two-dimensional arrays",
+    "text": "An array of arrays, like a table with rows and columns. You use two indexes: <b>grid[row][col]</b>. Use nested loops to walk through it.",
+    "code": "int[][] grid = {\n    {1, 2, 3},\n    {4, 5, 6}\n};\nSystem.out.println(grid[1][2]);   // 6\nfor (int r = 0; r < grid.length; r++) {\n    for (int c = 0; c < grid[r].length; c++) {\n        System.out.print(grid[r][c] + \" \");\n    }\n    System.out.println();\n}"
+   },
+   {
+    "heading": "Strings: text as objects",
+    "text": "A String is a sequence of characters, also numbered from 0. Unlike an array, a String is an <b>object</b> with many helpful methods, and its length uses <b>parentheses</b>: s.length(). Strings are <b>immutable</b>: methods never change the original, they return a new String.",
+    "code": "String s = \"Hello\";\ns.length();         // 5\ns.charAt(0);        // 'H'\ns.charAt(4);        // 'o'\ns.toUpperCase();    // \"HELLO\"   (s itself is unchanged)\ns = s.toUpperCase(); // now s is \"HELLO\""
+   },
+   {
+    "heading": "Essential String methods",
+    "text": "<b>substring(a, b)</b>: from index a up to but NOT including b.<br><b>substring(a)</b>: from a to the end.<br><b>indexOf(x)</b>: position of the first match, or -1.<br><b>contains(x)</b>, <b>startsWith(x)</b>, <b>endsWith(x)</b>: true/false.<br><b>replace(old, new)</b>, <b>trim()</b> (removes outer spaces), <b>isEmpty()</b>.",
+    "code": "String s = \"coder hero\";\ns.substring(0, 5);     // \"coder\"\ns.substring(6);        // \"hero\"\ns.indexOf(\"hero\");     // 6\ns.indexOf(\"z\");        // -1\ns.contains(\"der\");     // true\ns.replace(\"hero\", \"cat\");  // \"coder cat\"\n\"  hi  \".trim();       // \"hi\""
+   },
+   {
+    "heading": "Comparing Strings",
+    "text": "Never use == for text. It compares memory addresses, not letters. Use <b>.equals()</b> (exact match), <b>.equalsIgnoreCase()</b>, or <b>.compareTo()</b> (returns 0 if equal, negative if it comes before, positive if after).",
+    "code": "String a = \"Kai\";\nString b = \"kai\";\na.equals(b);             // false\na.equalsIgnoreCase(b);   // true\na.compareTo(\"Lia\");      // negative (K before L)"
+   },
+   {
+    "heading": "Looping through a String",
+    "text": "Use charAt with a for loop to examine each character. Here is a vowel counter.",
+    "code": "String word = \"education\";\nint vowels = 0;\nfor (int i = 0; i < word.length(); i++) {\n    char ch = word.charAt(i);\n    if (\"aeiou\".indexOf(ch) != -1) vowels++;\n}\n// vowels = 5"
+   },
+   {
+    "heading": "split and join",
+    "text": "<b>split</b> cuts a String into an array of pieces. <b>String.join</b> glues an array back together.",
+    "code": "String csv = \"red,green,blue\";\nString[] parts = csv.split(\",\");   // {\"red\",\"green\",\"blue\"}\nSystem.out.println(parts[1]);        // green\nString back = String.join(\"-\", parts);  // red-green-blue"
+   },
+   {
+    "heading": "Building text efficiently",
+    "text": "Because Strings are immutable, joining inside a big loop creates many throwaway objects. Use <b>StringBuilder</b> to build text in place.",
+    "code": "StringBuilder sb = new StringBuilder();\nfor (int i = 1; i <= 3; i++) {\n    sb.append(i).append(\" \");\n}\nString result = sb.toString();   // \"1 2 3 \"\nnew StringBuilder(\"abc\").reverse().toString();  // \"cba\""
+   },
+   {
+    "heading": "Worked example: trace it",
+    "text": "What does this print?",
+    "code": "int[] a = {3, 8, 1};\nint count = 0;\nfor (int i = 0; i < a.length; i++) {\n    if (a[i] > 2) count++;\n}\nSystem.out.println(count);   // 3 and 8 are > 2  ->  2\n\nString s = \"Java\";\nSystem.out.println(s.substring(1, 3));  // \"av\""
+   },
+   {
+    "heading": "Practice: try to answer first",
+    "text": "<b>Q1.</b> What is the last valid index of an array of length 8?<br><b>Q2.</b> What does \"Boris\".charAt(0) return?<br><b>Q3.</b> What does \"hello\".substring(1, 4) return?<br><b>Q4.</b> Why does int[] b = a; not copy the array?<br><b>Q5.</b> arr.length or arr.length() for an array?<br><br><b>Answers:</b> Q1: 7. Q2: 'B'. Q3: \"ell\". Q4: both variables refer to the same array. Q5: arr.length (no parentheses)."
+   },
+   {
+    "heading": "Cheat sheet: Arrays and Strings",
+    "text": "<b>Create:</b> int[] a = {1,2,3}; or new int[5];<br><b>Index:</b> a[0] first, a[a.length-1] last<br><b>Array size:</b> a.length &nbsp; <b>String size:</b> s.length()<br><b>Crash:</b> index &lt; 0 or &gt;= length<br><b>Loop:</b> for (int i = 0; i &lt; a.length; i++)<br><b>Print array:</b> Arrays.toString(a) &nbsp; <b>Sort:</b> Arrays.sort(a)<br><b>String:</b> charAt, substring(a,b), indexOf, contains, replace, trim, split<br><b>Compare text:</b> .equals(), never ==<br><b>Strings never change;</b> methods return new Strings<br><b>b = a</b> shares the same array"
+   }
+  ]
+ },
+ {
+  "level": 6,
+  "sections": [
+   {
+    "heading": "Why methods?",
+    "text": "A <b>method</b> is a named block of code that does one job. Instead of copying the same ten lines in five places, you write them once and <b>call</b> the method by name. Benefits: less repeated code, easier fixes (change it in one place), and programs you can read like a list of steps."
+   },
+   {
+    "heading": "Anatomy of a method",
+    "text": "<b>modifiers returnType name(parameters) { body }</b><br><b>static</b>: lets main call it directly without creating an object.<br><b>returnType</b>: the type of value handed back (int, String, boolean...). Use <b>void</b> if nothing comes back.<br><b>name</b>: camelCase, usually a verb (calculateTotal, printReport).<br><b>parameters</b>: the inputs, each with a type and a name.",
+    "code": "static int add(int a, int b) {\n    return a + b;\n}\n\nstatic void greet(String name) {\n    System.out.println(\"Hello, \" + name);\n}"
+   },
+   {
+    "heading": "Calling a method",
+    "text": "Write the name followed by the <b>arguments</b> in parentheses, in the same count, order and type as the parameters. Parameters are the names in the definition; arguments are the actual values you pass in the call.",
+    "code": "int total = add(2, 3);        // total = 5\ngreet(\"Kai\");                 // prints Hello, Kai\nSystem.out.println(add(10, 4) * 2);   // 28"
+   },
+   {
+    "heading": "What happens during a call",
+    "text": "<b>1.</b> Java evaluates the arguments.<br><b>2.</b> It copies them into the parameters.<br><b>3.</b> It jumps into the method and runs the body.<br><b>4.</b> At <b>return</b> (or the closing brace for void), it jumps back to where the call was, replacing the call with the returned value."
+   },
+   {
+    "heading": "Return values",
+    "text": "<b>return value;</b> ends the method immediately and sends the value to the caller. A non-void method must return a value of the declared type on <b>every possible path</b>. Code after a return is unreachable, which is a compile error.",
+    "code": "static boolean isEven(int n) {\n    return n % 2 == 0;\n}\n\nstatic String grade(int score) {\n    if (score >= 75) {\n        return \"Pass\";\n    }\n    return \"Fail\";      // covers every other path\n}\n\nstatic int broken(int n) {\n    if (n > 0) {\n        return 1;\n    }\n}   // ERROR: missing return statement"
+   },
+   {
+    "heading": "void methods",
+    "text": "A void method does something (prints, changes data) but gives nothing back. You cannot store its result. You can still write a bare <b>return;</b> to leave early.",
+    "code": "static void printLine(int n) {\n    if (n <= 0) return;      // leave early\n    for (int i = 0; i < n; i++) System.out.print(\"-\");\n    System.out.println();\n}\n\nint x = printLine(5);   // ERROR: void has no value"
+   },
+   {
+    "heading": "Parameters are copies (pass by value)",
+    "text": "For primitives (int, double, boolean, char), Java passes a <b>copy</b> of the value. Changing the parameter inside the method does <b>not</b> change the caller's variable.",
+    "code": "static void bump(int n) {\n    n = n + 1;       // changes only the local copy\n}\n\nint x = 5;\nbump(x);\nSystem.out.println(x);    // still 5"
+   },
+   {
+    "heading": "Objects and arrays share the original",
+    "text": "For arrays and objects, the copy that gets passed is a copy of the <b>reference</b> (the address). So the method can change the <b>contents</b> of the original array. But reassigning the parameter to a different array does not affect the caller.",
+    "code": "static void zeroFirst(int[] a) {\n    a[0] = 0;          // changes the caller's array\n}\n\nint[] data = {7, 8, 9};\nzeroFirst(data);\nSystem.out.println(data[0]);   // 0"
+   },
+   {
+    "heading": "Returning a result instead",
+    "text": "To get a changed primitive out of a method, return it and store it.",
+    "code": "static int bump(int n) {\n    return n + 1;\n}\n\nint x = 5;\nx = bump(x);     // x is now 6"
+   },
+   {
+    "heading": "Multiple parameters and order",
+    "text": "Arguments are matched to parameters strictly by position. Swapping them silently changes the meaning.",
+    "code": "static int power(int base, int exponent) {\n    int result = 1;\n    for (int i = 0; i < exponent; i++) result *= base;\n    return result;\n}\n\npower(2, 3);   // 8\npower(3, 2);   // 9"
+   },
+   {
+    "heading": "Overloading",
+    "text": "Several methods may share one name if their <b>parameter lists differ</b> (different number or types). Java picks the right one from your arguments. A different return type alone is not enough.",
+    "code": "static int area(int side) { return side * side; }\nstatic int area(int w, int h) { return w * h; }\nstatic double area(double r) { return Math.PI * r * r; }\n\narea(4);       // 16\narea(4, 5);    // 20\narea(2.0);     // 12.566..."
+   },
+   {
+    "heading": "Scope: where variables live",
+    "text": "A variable exists only inside the braces where it was declared. Variables declared inside a method (and its parameters) are <b>local</b>: no other method can see them, and the same name can be reused safely in different methods. A loop variable like i vanishes after the loop.",
+    "code": "static void a() {\n    int secret = 1;\n}\nstatic void b() {\n    System.out.println(secret);  // ERROR: cannot find symbol\n}\n\nfor (int i = 0; i < 3; i++) { }\nSystem.out.println(i);           // ERROR: i is out of scope"
+   },
+   {
+    "heading": "The main method",
+    "text": "Every Java program starts at <b>main</b>. Its header must be exactly this. Other methods only run if main (or something main calls) calls them.",
+    "code": "public static void main(String[] args) {\n    System.out.println(\"Program starts here\");\n    greet(\"Kai\");\n}"
+   },
+   {
+    "heading": "Methods calling methods",
+    "text": "Methods can call other methods, building big jobs from small ones. Each call gets its own fresh set of local variables.",
+    "code": "static int square(int n) { return n * n; }\n\nstatic int sumOfSquares(int a, int b) {\n    return square(a) + square(b);\n}\n\nsumOfSquares(3, 4);   // 9 + 16 = 25"
+   },
+   {
+    "heading": "Recursion (a method calling itself)",
+    "text": "A recursive method solves a problem by calling itself on a smaller version. It needs a <b>base case</b> (when to stop) and a <b>recursive case</b> (a smaller call). Without a base case you get a StackOverflowError.",
+    "code": "static int factorial(int n) {\n    if (n <= 1) return 1;           // base case\n    return n * factorial(n - 1);    // smaller problem\n}\n// factorial(4) = 4 * 3 * 2 * 1 = 24"
+   },
+   {
+    "heading": "Designing good methods",
+    "text": "<b>One job each:</b> a method should do one thing and have a name that says it.<br><b>Short:</b> if it grows past a screen, split it.<br><b>Return, do not print:</b> a method that returns a value is reusable; one that only prints is hard to reuse.<br><b>Avoid surprises:</b> do not change inputs unless the name says so."
+   },
+   {
+    "heading": "Worked example: trace it",
+    "text": "What does this print?",
+    "code": "static int twice(int n) { return n * 2; }\nstatic void show(int n) { System.out.println(n); }\n\npublic static void main(String[] args) {\n    int x = 4;\n    show(twice(x) + 1);   // twice(4) = 8, +1 = 9\n    show(x);              // 4, x was never changed\n}"
+   },
+   {
+    "heading": "Practice: try to answer first",
+    "text": "<b>Q1.</b> What does a void method return?<br><b>Q2.</b> If void inc(int n) { n++; } is called with x = 5, what is x after?<br><b>Q3.</b> Can two methods in one class both be named print?<br><b>Q4.</b> What is wrong with a method int f(int n) { if (n &gt; 0) return 1; } ?<br><br><b>Answers:</b> Q1: nothing. Q2: still 5 (copy). Q3: yes, if their parameters differ (overloading). Q4: no return when n is 0 or less, so a return is missing on one path."
+   },
+   {
+    "heading": "Cheat sheet: Methods",
+    "text": "<b>Define:</b> static returnType name(type param, ...) { ... }<br><b>Call:</b> name(args);<br><b>void</b> returns nothing; <b>return x;</b> sends x back and exits<br><b>Every path</b> of a non-void method must return<br><b>Arguments</b> match parameters in count, order and type<br><b>Primitives</b> are passed by copy; arrays/objects share contents<br><b>Overload:</b> same name, different parameters<br><b>Scope:</b> locals live only in their braces<br><b>main:</b> public static void main(String[] args)<br><b>Recursion</b> needs a base case"
+   }
+  ]
+ },
+ {
+  "level": 7,
+  "sections": [
+   {
+    "heading": "Thinking in objects",
+    "text": "Real programs model real things: a hero, a patient, a bank account. <b>Object-oriented programming (OOP)</b> bundles a thing's <b>data</b> (what it knows) and its <b>actions</b> (what it can do) into one unit. Java is built around this idea."
+   },
+   {
+    "heading": "Class versus object",
+    "text": "A <b>class</b> is a <b>blueprint</b>: it describes what every Hero has and can do. An <b>object</b> (or <i>instance</i>) is one actual Hero built from that blueprint, created with <b>new</b>. One class can produce thousands of objects, each with its own data.<br><br>Analogy: the class is the cookie cutter, the objects are the cookies."
+   },
+   {
+    "heading": "Fields and methods",
+    "text": "<b>Fields</b> (also called attributes or instance variables) are variables that belong to each object. <b>Methods</b> are the actions. You reach both with the <b>dot operator</b>.",
+    "code": "class Hero {\n    String name;       // fields\n    int power;\n\n    void shout() {     // method\n        System.out.println(name + \" attacks!\");\n    }\n}\n\nHero kai = new Hero();\nkai.name = \"Kai\";\nkai.power = 9;\nkai.shout();      // Kai attacks!\n\nHero nova = new Hero();\nnova.name = \"Nova\";   // separate object, separate data"
+   },
+   {
+    "heading": "Constructors",
+    "text": "A <b>constructor</b> is special code that runs when you use <b>new</b>, so every object starts in a valid state. Rules: it has the <b>same name as the class</b> and <b>no return type</b> (not even void).",
+    "code": "class Hero {\n    String name;\n    int power;\n\n    Hero(String name, int power) {\n        this.name = name;\n        this.power = power;\n    }\n}\n\nHero kai = new Hero(\"Kai\", 9);"
+   },
+   {
+    "heading": "The this keyword",
+    "text": "<b>this</b> means \"the object I am working inside right now\". It is how you separate a field from a parameter with the same name: <b>this.name</b> is the field, plain <b>name</b> is the parameter. Without this, name = name would assign the parameter to itself and the field stays empty.",
+    "code": "Hero(String name, int power) {\n    this.name = name;    // field = parameter\n    this.power = power;\n}"
+   },
+   {
+    "heading": "Default constructor",
+    "text": "If you write no constructor at all, Java supplies an invisible empty one so new Hero() works. The moment you write <b>any</b> constructor, that free one disappears. Then new Hero() fails unless you add one yourself.",
+    "code": "Hero() { }                    // add back if you still want new Hero()\nHero h = new Hero();"
+   },
+   {
+    "heading": "Overloaded constructors",
+    "text": "A class can have several constructors with different parameters. One can call another using <b>this(...)</b> as its very first line to avoid repeating code.",
+    "code": "Hero(String name, int power) {\n    this.name = name;\n    this.power = power;\n}\nHero(String name) {\n    this(name, 1);         // calls the two-argument constructor\n}"
+   },
+   {
+    "heading": "Encapsulation: private and public",
+    "text": "If every field is open, any code can set power = -999 and break your object. <b>Encapsulation</b> means hiding the data and controlling access.<br><b>private</b>: visible only inside the class.<br><b>public</b>: visible everywhere.<br>Provide <b>getters</b> (read) and <b>setters</b> (write, with checks).",
+    "code": "class Hero {\n    private int power;\n\n    public int getPower() { return power; }\n\n    public void setPower(int p) {\n        if (p >= 0) {\n            power = p;       // only valid values allowed\n        }\n    }\n}\n\nHero h = new Hero();\nh.power = 5;         // ERROR: power has private access\nh.setPower(5);       // OK"
+   },
+   {
+    "heading": "Instance versus static",
+    "text": "<b>Instance</b> members belong to each object (every Hero has its own name). <b>static</b> members belong to the <b>class itself</b> and exist once, shared by all objects. Call static members through the class name. A static method cannot use instance fields directly because there is no particular object.",
+    "code": "class Hero {\n    static int count = 0;      // shared by all heroes\n    String name;\n\n    Hero(String name) {\n        this.name = name;\n        count++;\n    }\n}\n\nnew Hero(\"Kai\");\nnew Hero(\"Nova\");\nSystem.out.println(Hero.count);   // 2"
+   },
+   {
+    "heading": "Object references",
+    "text": "An object variable does not hold the object; it holds a <b>reference</b> (an address) to it. Copying the variable copies the address, so both variables point at the <b>same</b> object. Changing it through one name changes it for both.",
+    "code": "Hero a = new Hero(\"Kai\", 9);\nHero b = a;          // same object\nb.setPower(1);\nSystem.out.println(a.getPower());  // 1\n\nHero c = new Hero(\"Kai\", 9);\nSystem.out.println(a == c);        // false: different objects"
+   },
+   {
+    "heading": "null and NullPointerException",
+    "text": "<b>null</b> means \"this variable points at no object\". Calling a method or reading a field on null crashes with <b>NullPointerException</b>. Declared but unassigned object fields start as null. Guard with a check when null is possible.",
+    "code": "Hero h = null;\nh.shout();              // CRASH: NullPointerException\n\nif (h != null) {\n    h.shout();          // safe\n}"
+   },
+   {
+    "heading": "Inheritance",
+    "text": "<b>extends</b> makes a new class that automatically has everything its <b>parent</b> (superclass) has, plus its own additions. It models an \"is-a\" relationship: a Doctor <i>is a</i> Staff member. It avoids duplicating shared code.",
+    "code": "class Staff {\n    String name;\n    Staff(String name) { this.name = name; }\n    void work() { System.out.println(name + \" works\"); }\n}\n\nclass Doctor extends Staff {\n    Doctor(String name) {\n        super(name);          // run the parent constructor\n    }\n    void heal() { System.out.println(name + \" heals\"); }\n}\n\nDoctor d = new Doctor(\"Ana\");\nd.work();    // inherited\nd.heal();    // its own"
+   },
+   {
+    "heading": "super",
+    "text": "<b>super(...)</b> as the first line of a constructor calls the parent's constructor. <b>super.method()</b> calls the parent's version of a method. If the parent has no no-argument constructor, the child must call super(...) explicitly."
+   },
+   {
+    "heading": "Overriding methods",
+    "text": "A child class can replace an inherited method with its own version by writing a method with the <b>same name and parameters</b>. Add <b>@Override</b> so the compiler checks you spelled it right.",
+    "code": "class Villain {\n    void attack() { System.out.println(\"Hit\"); }\n}\nclass Corruptor extends Villain {\n    @Override\n    void attack() {\n        super.attack();                  // keep the old behaviour\n        System.out.println(\"Corrupt!\");  // add new behaviour\n    }\n}"
+   },
+   {
+    "heading": "Polymorphism",
+    "text": "A parent-type variable can hold any child object. When you call an overridden method, Java runs the <b>child's</b> version at runtime. This lets one loop treat many different kinds of objects the same way.",
+    "code": "Villain v = new Corruptor();   // parent type, child object\nv.attack();                    // prints Hit then Corrupt!\n\nVillain[] team = { new Villain(), new Corruptor() };\nfor (Villain x : team) x.attack();   // each does its own version"
+   },
+   {
+    "heading": "toString and printing objects",
+    "text": "Printing an object normally shows something like Hero@1b6d3586. Override <b>toString</b> to control what appears.",
+    "code": "@Override\npublic String toString() {\n    return name + \" (power \" + power + \")\";\n}\n\nSystem.out.println(kai);   // Kai (power 9)"
+   },
+   {
+    "heading": "equals for objects",
+    "text": "<b>==</b> on objects asks \"are these the exact same object?\". If you want \"do they hold the same data?\", you write an <b>equals</b> method. Strings already do this, which is why .equals() works on them."
+   },
+   {
+    "heading": "Putting it together",
+    "text": "A small complete class showing a constructor, private data, validation, a method and toString. Study how each piece connects.",
+    "code": "class Account {\n    private String owner;\n    private double balance;\n\n    Account(String owner, double start) {\n        this.owner = owner;\n        this.balance = Math.max(0, start);\n    }\n\n    void deposit(double amt) {\n        if (amt > 0) balance += amt;\n    }\n\n    boolean withdraw(double amt) {\n        if (amt > 0 && amt <= balance) {\n            balance -= amt;\n            return true;\n        }\n        return false;\n    }\n\n    double getBalance() { return balance; }\n\n    @Override\n    public String toString() { return owner + \": \" + balance; }\n}\n\nAccount acc = new Account(\"Ana\", 100);\nacc.deposit(50);\nacc.withdraw(30);\nSystem.out.println(acc);   // Ana: 120.0"
+   },
+   {
+    "heading": "Practice: try to answer first",
+    "text": "<b>Q1.</b> What is the difference between a class and an object?<br><b>Q2.</b> Why does a constructor have no return type?<br><b>Q3.</b> What does this refer to?<br><b>Q4.</b> What happens if you call a method on a null reference?<br><b>Q5.</b> Why make fields private?<br><br><b>Answers:</b> Q1: class = blueprint, object = one instance made with new. Q2: it is not a normal method; it only initializes the new object. Q3: the current object. Q4: NullPointerException. Q5: so outside code cannot put the object into an invalid state; access goes through checked getters/setters."
+   },
+   {
+    "heading": "Cheat sheet: Classes and objects",
+    "text": "<b>class</b> = blueprint; <b>object</b> = instance made with <b>new</b><br><b>Field</b> = data; <b>method</b> = action; <b>dot</b> reaches both<br><b>Constructor:</b> same name as class, no return type<br><b>this</b> = current object; this.x = x;<br><b>private</b> fields + public getters/setters = encapsulation<br><b>static</b> = one copy shared by the class<br><b>extends</b> = inherit; <b>super(...)</b> calls the parent constructor<br><b>@Override</b> replaces an inherited method<br><b>Reference:</b> b = a shares one object; == compares addresses<br><b>null</b> + method call = NullPointerException<br><b>toString()</b> controls printing"
+   }
+  ]
+ }
+]
